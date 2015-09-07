@@ -1,7 +1,10 @@
 To export HighCharts to PDF using JSPDF,canvg and Html2Canvas.
-TO export HighChart to PDF all you need to add reference of Html2Canvas js file from below location:
-https://github.com/niklasvh/html2canvas/releases/download/0.5.0-alpha1/html2canvas.js
-First Create Your HighChart on Page Then Create a button on page and called below function to create PDF.
+TO export HighChart to PDF all you need to add references of below files
+	Html2Canvas js library
+	canvg Js library
+	JSPdf Js library 
+	JQuery Js library
+First Create Your HighChart on Page then Create a button name as export and call below function onclick event.
 
 
  function exportChart() {
@@ -26,8 +29,10 @@ First Create Your HighChart on Page Then Create a button on page and called belo
                         var x = 600;
                         var y = 100;
                         var lineheight = 25;
-                      
+                     
                         var txt = document.getElementById('dvChartData').innerHTML;
+                         //dvChartData contains chart data information, which is not part of svg element its a diffrent div.
+                         // for linebreaks in canvas image i have added a below logic
                         var lines = txt.split('\n');
                         for (var i = 0; i < lines.length; i++)
                             ctx3.fillText(lines[i], x, y + (i * lineheight),3000);
@@ -37,7 +42,7 @@ First Create Your HighChart on Page Then Create a button on page and called belo
                         img = img.replace('data:image/jpeg;base64,', '')
                         finalImageSrc = 'data:image/jpeg;base64,' + img;
                         $('#export-image-container').attr('href', finalImageSrc)
-
+			//imgData contains highchart svg's image
                         var imgData = finalImageSrc;
                         document.getElementById('canvgCanvas').style.display = 'none';
                       
@@ -47,7 +52,7 @@ First Create Your HighChart on Page Then Create a button on page and called belo
                         doc.text(x, y, txt);
                         doc.addImage(imgData, 'JPEG', -30, 5, 240, 110);
                         doc.save("BFPChart.pdf");
-                     
+                     //To reload your highchart
                         window.location.reload();
                         
                     }
@@ -57,6 +62,7 @@ First Create Your HighChart on Page Then Create a button on page and called belo
         
         var context;
 	function render() {
+	//canvas1 is your canvas where your high chart is rendered as image after this function call
 	        var c = document.getElementById('canvas1');
 	        c.width = '742';
 	        c.height = '442';
