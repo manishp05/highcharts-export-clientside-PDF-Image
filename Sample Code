@@ -1,6 +1,6 @@
 To export HighCharts to PDF using JSPDF,canvg and Html2Canvas.
 TO export HighChart to PDF all you need to add references of below files
-	Html2Canvas js library
+	<a href="https://github.com/niklasvh/html2canvas/releases/download/0.5.0-alpha1/html2canvas.js"> Html2Canvas js library</a>
 	canvg Js library
 	JSPdf Js library 
 	JQuery Js library
